@@ -1,0 +1,35 @@
+.card{
+    display: flex;
+    align-items: center;
+     
+    max-width: 325px;
+    max-height: 119px;
+    margin: 0 auto;
+}
+.container img {
+    margin: 20px;
+    margin-left: 10px;
+}
+.addCard p {
+    margin-bottom: 8px;
+
+}
+.addCard b {
+    display: flex;
+    min-height: 20px;
+    align-items: center;
+}
+
+.cross{
+    width: 11px;
+    height: 11px;
+}
+.btn{
+    min-width: 32px;
+    min-height: 32px;
+}
+.btn:hover{
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 8px;
+}

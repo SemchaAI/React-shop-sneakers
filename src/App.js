@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { observer } from "mobx-react-lite";
+
+//import store from "./contexts/store";
+//import useStore from "../hooks/useStore";
+
+import RouterView from "./routes";
+import Header from "./components/header/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <Header />
+      <main>
+        <RouterView />
+        {/* <div className="container">
+          <div>
+            <h1>Все кроссовки</h1>
+          </div>
+          <div className="find">
+            <input placeholder="search"></input>
+          </div>
+        </div> */}
+        {/* <div className="cardsContainer">
+          {[...test, ...test2].map((val, index) => (
+            <Card index={index} val={val} key={val.id} />
+          ))} */}
+        {/* {console.log(test)} */}
+        {/* {item.map((val, index) => (
+            <Card index={index} val={val} key={val.id} />
+          ))} */}
+        {/* {console.log(cardsStore.item)}
+        </div> */}
+      </main>
+      <footer></footer>
     </div>
   );
 }
 
-export default App;
+//{console.log(cardsStore.item)}
+
+export default observer(App);

@@ -1,0 +1,33 @@
+.inp{
+	width: 50px;
+}
+.cntHandler {
+
+}
+.cntHandler input {
+    max-width: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+	text-align:center 
+
+}
+.cntHandler button {
+    min-width: 20px;
+    min-height: 20px;
+    transform:  rotate(45deg);
+    cursor: pointer;
+}
+.dec {
+    margin-left: 20px;
+}
+.dec:hover{
+    border: 2px solid  var(--tomato);
+    border-radius: 10px;
+}
+.inc:hover{
+    border: 2px solid  var(--green);
+    border-radius: 10px;
+}
+.inc {
+    transform:  rotate(45deg);
+}
