@@ -1,6 +1,3 @@
 {
-  "Cart": {
-    "id": { "string": [] },
-    "userCart": { "string": [] }
-  }
+  "Cart": {}
 }
