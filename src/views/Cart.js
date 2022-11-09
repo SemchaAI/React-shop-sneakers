@@ -16,6 +16,7 @@ import useOnClickOutside from "../hooks/useOnClickOutside";
 const Cart = () => {
   let [CartCardStore] = useStore("cart");
   let { cartDetailed: cart, total, totalWithTax } = CartCardStore;
+  console.log();
   const ref = useRef();
   let emptyCart = cart.length === 0;
 
@@ -69,6 +70,7 @@ const Cart = () => {
                 rest={pr.rest}
                 cnt={pr.cnt}
                 current={pr.cnt}
+                img={pr.img}
                 {...pr}
               />
             ))}

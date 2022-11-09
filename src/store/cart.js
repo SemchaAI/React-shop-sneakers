@@ -4,9 +4,10 @@ import { makeAutoObservable, runInAction } from "mobx";
 export default class Cart {
   cart = [];
   get cartDetailed() {
-    return this.cart.map((item) => {
+    return this.cart.map((item, index) => {
       let details = this.rootStore.cards.findItem(item.id);
-      //console.log({ ...details, ...item });
+      let a;
+      console.log((a = { ...details, ...item }));
       return { ...details, ...item };
     });
   }
@@ -24,7 +25,7 @@ export default class Cart {
 
   load = async () => {
     let cart = await this.api.load();
-
+    console.log(cart);
     runInAction(() => {
       this.cart = cart;
     });

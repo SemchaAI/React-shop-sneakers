@@ -6,34 +6,46 @@ import { observer } from "mobx-react-lite";
 
 import RouterView from "./routes";
 import Header from "./components/header/Header";
+import BtnContextProvider from "./contexts/btn";
+
+import { add, testChange, addInit, load } from "./api/apiCart";
+
+import { getAuth, signInAnonymously } from "firebase/auth";
+import app from "./api/apiCard";
+import firebase from "firebase/compat/app";
+import Cart from "./store/cart";
+
+firebase.auth(app).onAuthStateChanged(function (user) {
+  if (user) {
+    console.log("signed");
+    localStorage.setItem("user", user.uid);
+    if (Cart) {
+    }
+    console.log(addInit({ [user.uid]: [] }));
+    //console.log(add({ id: 1, cnt: 1 }));
+    //console.log(testChange());
+    console.log(user.uid);
+  } else {
+    firebase
+      .auth()
+      .signInAnonymously()
+      .then(localStorage.setItem("user", user.uid));
+    // console.log(add({ [user.uid]: [] }));
+    console.log(user.uid);
+  }
+});
 
 function App() {
   return (
-    <div className="wrapper">
-      <Header />
-      <main>
-        <RouterView />
-        {/* <div className="container">
-          <div>
-            <h1>Все кроссовки</h1>
-          </div>
-          <div className="find">
-            <input placeholder="search"></input>
-          </div>
-        </div> */}
-        {/* <div className="cardsContainer">
-          {[...test, ...test2].map((val, index) => (
-            <Card index={index} val={val} key={val.id} />
-          ))} */}
-        {/* {console.log(test)} */}
-        {/* {item.map((val, index) => (
-            <Card index={index} val={val} key={val.id} />
-          ))} */}
-        {/* {console.log(cardsStore.item)}
-        </div> */}
-      </main>
-      <footer></footer>
-    </div>
+    <BtnContextProvider>
+      <div className="wrapper">
+        <Header />
+        <main>
+          <RouterView />
+        </main>
+        <footer></footer>
+      </div>
+    </BtnContextProvider>
   );
 }
 

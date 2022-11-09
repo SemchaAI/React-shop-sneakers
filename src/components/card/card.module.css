@@ -60,6 +60,10 @@
     fill: var(--tomato);
 }
 
+.filter{
+  filter: grayscale(100%);
+}
+
 .card span {
   font-weight: 500;
   font-size: 11px;

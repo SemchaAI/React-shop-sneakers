@@ -1,0 +1,9 @@
+{
+  "rules": {
+    ".read": "now < 1669845600000",
+    ".write": "now < 1669845600000",
+    "/carts/$uid": {
+      ".indexOn": "id"
+    }
+  }
+}

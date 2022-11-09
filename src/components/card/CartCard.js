@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
 import styles from "./cartCard.module.css";
 
@@ -8,11 +8,20 @@ import { change } from "../../api/apiCart";
 
 import { ReactComponent as Cross } from "../../img/cross.svg";
 
+import { BtnContext } from "../../contexts/btn";
+
 const CartCard = ({ id, description, price, img, rest, cnt, current }) => {
+  const { btnActive } = useContext(BtnContext);
   let [CartCardStore] = useStore("cart");
-  const clickHandler = () => {
+
+  const handleInActive = () => {
+    btnActive(false);
     CartCardStore.remove(id);
   };
+
+  // const clickHandler = () => {
+  //   CartCardStore.remove(id);
+  // };
 
   return (
     <>
@@ -53,7 +62,7 @@ const CartCard = ({ id, description, price, img, rest, cnt, current }) => {
           </div>
         </div>
         <div>
-          <button onClick={clickHandler} className={styles.btn}>
+          <button onClick={handleInActive} className={styles.btn}>
             <Cross className={styles.cross} />
           </button>
         </div>

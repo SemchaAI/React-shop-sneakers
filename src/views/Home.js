@@ -1,5 +1,4 @@
 import React from "react";
-
 import useStore from "../hooks/useStore";
 import { observer } from "mobx-react-lite";
 import Card from "../components/card/Card";
