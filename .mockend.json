@@ -1,5 +1,5 @@
 {
-  "item": [
+  "Item": [
     {
       "id": 1,
       "description": "Мужские Кроссовки Nike Blazer Mid Suede",
@@ -85,7 +85,7 @@
       "rest": 10
     }
   ],
-  "cart": [
+  "Cart": [
     {
       "id": "p3WdP8ZCRaU0JIvsYhzDH463yAB3",
       "userCart": []
