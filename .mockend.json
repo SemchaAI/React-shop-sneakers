@@ -1,6 +1,14 @@
 {
-  "Cart": {
-    "id": "p3WdP8ZCRaU0JIvsYhzDH463yAB3",
-    "userCart": []
+  "Post": {
+    "title": { "string": {} },
+    "comments": {
+      "hasMany": "Comment"
+    }
+  },
+  "Comment": {
+    "body": { "string": {} },
+    "post": {
+      "belongsTo": "Post"
+    }
   }
 }
