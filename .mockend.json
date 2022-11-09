@@ -1,5 +1,5 @@
 {
-  "Post": {
-    "title": { "string": {} }
+  "Cart": {
+    "userCart": { "string": {} }
   }
 }
