@@ -1,3 +1,102 @@
 {
-  "Carts": { "string": [] }
+  "item": [
+    {
+      "id": 1,
+      "description": "Мужские Кроссовки Nike Blazer Mid Suede",
+      "price": 12999,
+      "img": "1",
+      "rest": 0
+    },
+    {
+      "id": 2,
+      "description": "Мужские Кроссовки Nike Air Max 270",
+      "price": 12999,
+      "img": "2",
+      "rest": 4
+    },
+    {
+      "id": 3,
+      "description": "Мужские Кроссовки Nike Blazer Mid Suede",
+      "price": 8499,
+      "img": "3",
+      "rest": 3
+    },
+    {
+      "id": 4,
+      "description": "Кроссовки Puma X Aka Boku Future Rider",
+      "price": 8999,
+      "img": "4",
+      "rest": 4
+    },
+    {
+      "id": 5,
+      "description": "Мужские Кроссовки Nike Blazer Mid Suede",
+      "price": 12999,
+      "img": "5",
+      "rest": 5
+    },
+    {
+      "id": 6,
+      "description": "Мужские Кроссовки Under Armour Curry 8",
+      "price": 15199,
+      "img": "6",
+      "rest": 10
+    },
+    {
+      "id": 7,
+      "description": "Мужские Кроссовки Nike Kyrie 7",
+      "price": 11299,
+      "img": "7",
+      "rest": 10
+    },
+    {
+      "id": 8,
+      "description": "Мужские Кроссовки Jordan Air Jordan 11",
+      "price": 10799,
+      "img": "8",
+      "rest": 10
+    },
+    {
+      "id": 9,
+      "description": "Мужские Кроссовки Nike Blazer Mid Suede",
+      "price": 12999,
+      "img": "5",
+      "rest": 10
+    },
+    {
+      "id": 10,
+      "description": "Мужские Кроссовки Under Armour Curry 8",
+      "price": 15199,
+      "img": "6",
+      "rest": 10
+    },
+    {
+      "id": 11,
+      "description": "Мужские Кроссовки Nike Kyrie 7",
+      "price": 11299,
+      "img": "7",
+      "rest": 10
+    },
+    {
+      "id": 12,
+      "description": "Мужские Кроссовки Jordan Air Jordan 11",
+      "price": 10799,
+      "img": "8",
+      "rest": 10
+    }
+  ],
+  "cart": [
+    {
+      "id": "p3WdP8ZCRaU0JIvsYhzDH463yAB3",
+      "userCart": []
+    },
+    {
+      "id": "JooXJsGPjSgODmNH7uFNXwW3i6z2",
+      "userCart": []
+    },
+    {
+      "id": "1nEJlsOyGsf1pu1tBcS8UqXExio1",
+      "userCart": []
+    }
+  ]
 }
