@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Cart from "./views/Cart";
 import E404 from "./views/E404";
+import Favorite from "./views/Favorite";
 
 import Home from "./views/Home";
 import User from "./views/User";
@@ -41,6 +42,7 @@ export default function () {
         }
       />
       <Route path="/user" element={<User />} />
+      <Route path="/favorite" element={<Favorite />} />
       <Route
         path="*"
         element={
