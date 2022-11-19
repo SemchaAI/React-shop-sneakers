@@ -1,6 +1,7 @@
 .container{
     text-align: center;
     margin: 160px auto;
+    padding-bottom: 160px ;
     max-width: 330px;
     color: #000;
 }
@@ -42,8 +43,4 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 19px;
-}
-
-body {
-    background-color:  #ffff;
 }
