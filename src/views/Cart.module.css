@@ -2,7 +2,6 @@
 .backdrop{
   display: block; 
   position: fixed; 
-  z-index: 1; 
   right:0;
   top: 0;
   width: 100%; 
@@ -10,6 +9,7 @@
   overflow: auto; 
   background-color: #000;
   opacity: 0.4;
+  z-index: 2;
 }
 
 @keyframes menu {
@@ -107,6 +107,9 @@
 .btnContainer{
   display: flex;
   justify-content: center;
+}
+.btnContainer a {
+  color: var(--white);
 }
 .cartFooter {
   position: fixed;
