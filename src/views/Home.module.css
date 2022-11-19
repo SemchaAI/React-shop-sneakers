@@ -1,0 +1,57 @@
+.container {
+    width: 1000px;
+    margin: 0px auto;
+}
+
+.Carousel{
+    width: 960px;
+    margin: 45px auto;
+}
+
+
+.ArrowPrev{
+    transform: rotate(180deg);
+    position: absolute;
+    left: -5px;
+    top: 132px;
+    background-color:transparent;
+    cursor: pointer;
+    z-index: 2;
+}
+.ArrowNext{
+    position: absolute;
+    right: -5px;
+    top: 132px;
+    background-color:transparent;
+    cursor: pointer;
+}
+.buttonBuy {
+    position: absolute;
+    max-width: 177px;
+    height: 47px;
+    bottom: 53px;
+    left: 59px;
+    width: 100%;
+    border-radius: 110px;
+    background: var(--green);
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cardsContainer{
+    display: flex;
+    padding-left: 60px;
+    padding-right: 60px;
+    justify-content: space-between;
+    max-width: 1080px;
+    flex-wrap: wrap;
+}
+  
