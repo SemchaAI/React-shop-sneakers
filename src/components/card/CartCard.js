@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 
 import styles from "./cartCard.module.css";
 
@@ -9,14 +9,36 @@ import { change } from "../../api/apiCart";
 import { ReactComponent as Cross } from "../../img/cross.svg";
 
 import { BtnContext } from "../../contexts/btn";
+import { CFlagBtnContext } from "../../contexts/cFlag";
 
 const CartCard = ({ id, description, price, img, rest, cnt, current }) => {
-  const { btnActive } = useContext(BtnContext);
+  const { btnActive, active, setId } = useContext(BtnContext);
+  const { setCnt, cnt: contextCnt } = useContext(CFlagBtnContext);
   let [CartCardStore] = useStore("cart");
+  let { cart, currentIds } = CartCardStore;
+  let data;
+  let trash;
+
+  if (currentIds === true) {
+    console.log(cart);
+    cart.map((val) =>
+      val.item.id === id ? (data = val.id) : (trash = val.id)
+    );
+    console.log("flagId");
+    currentIds = false;
+    console.log(currentIds);
+  }
+
+  /////////////////////////////////////////
+  /////////////////////////////////////////
+  /////////////////////////////////////////
 
   const handleInActive = () => {
-    btnActive(false);
-    CartCardStore.remove(id);
+    btnActive(!active);
+    setId(id);
+    console.log("remove data" + data);
+    CartCardStore.remove(data);
+    setCnt(contextCnt - 1);
   };
 
   // const clickHandler = () => {
@@ -27,12 +49,7 @@ const CartCard = ({ id, description, price, img, rest, cnt, current }) => {
     <>
       <div className={styles.card}>
         <div className={styles.container}>
-          <img
-            width={70}
-            height={70}
-            src={require(`../../img/sneakers${img}.jpg`)}
-            alt="sneakers"
-          />
+          <img width={70} height={70} src={img} alt="sneakers" />
         </div>
         <div className={styles.addCard}>
           <div>
@@ -56,7 +73,7 @@ const CartCard = ({ id, description, price, img, rest, cnt, current }) => {
                 min={1}
                 max={rest}
                 current={current}
-                onChange={(cnt) => change(id, cnt)}
+                onChange={(cnt) => change(data, cnt)}
               />
             </b>
           </div>
