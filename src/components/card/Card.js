@@ -10,34 +10,36 @@ import useStore from "../../hooks/useStore";
 
 import { BtnContext } from "../../contexts/btn";
 import { useContext } from "react";
+import { CFlagBtnContext } from "../../contexts/cFlag";
 
 const Card = (props) => {
   let [cardsStore, cartStore] = useStore("cards", "cart");
   let { item } = cardsStore;
   const { id, description, price, img, rest } = props.val;
-  let findItem = cartStore.inCart(id);
+  let findItem = cartStore.inCartNew(id);
+  console.log(findItem + "finded");
   const [btnState, setBtnState] = useState(findItem);
   const [favorbtnState, setFavorBtnState] = useState(false);
+  const { id: cardId, active } = useContext(BtnContext);
+  const { setCnt, cnt } = useContext(CFlagBtnContext);
 
-  const { btnActive, active } = useContext(BtnContext);
-  //btnActive(cartStore.inCart(id));
   const handleActive = () => {
-    cartStore.add(id);
-    btnActive(true);
-    setBtnState(true);
+    if (!btnState) {
+      cartStore.add(id);
+      // btnActive(true);
+      setCnt(cnt + 1);
+      setBtnState(true);
+    }
   };
   useEffect(() => {
-    if (active === false) {
-      btnActive(false);
+    if (cardId === id) {
+      setBtnState(false);
     }
-  });
-  // const clickHandler = () => {
-  //   // if (cartStore.inCart(id)) {
-  //   //   setBtnState(false);
-  //   // }
-  //   cartStore.add(id);
-  //   //setBtnState(true);
-  // };
+    // if (active === false) {
+    //   setBtnState(false);
+    // }
+  }, [cardId, id, active]);
+
   const favorClickHandler = () => {
     setFavorBtnState(!favorbtnState);
     //cardsStore.find(props.val.id);
@@ -66,7 +68,7 @@ const Card = (props) => {
             className={cn({ [styles.filter]: rest === 0 })}
             width={133}
             height={112}
-            src={require(`../../img/sneakers${img}.jpg`)}
+            src={img}
             alt="sneakers"
           />
         </div>
@@ -79,7 +81,7 @@ const Card = (props) => {
             </div>
             <div>
               <button onClick={handleActive} className={styles.btn}>
-                {btnState && active ? <Added /> : <Add />}
+                {btnState ? <Added /> : <Add />}
               </button>
             </div>
           </div>
