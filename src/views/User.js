@@ -3,12 +3,15 @@ import { observer } from "mobx-react-lite";
 
 import firebase from "firebase/compat/app";
 import { GoogleAuthProvider } from "firebase/auth";
+import styles from "./User.module.css";
+
+import { ReactComponent as Logout } from "../img/logout.svg";
 //import ProductCard from "./../components/products/card";
 
 function User() {
   const auth = firebase.auth();
   const [logtoken, setLogtoken] = useState(
-    localStorage.getItem("user") !== null ? true : false
+    localStorage.getItem("gUser") === "true" ? true : false
   );
   console.log(logtoken);
 
@@ -55,17 +58,28 @@ function User() {
   return (
     <>
       {logtoken ? (
-        <div>
-          <h2>Hello world</h2>
+        <div className={styles.container}>
+          <h2>Switch account?</h2>
           <div>{console.log(auth)}</div>
-          <button onClick={logout}>Logout</button>
+          <button className={styles.googleBtn} onClick={logout}>
+            <Logout className={styles.logoutIcon} />
+            <p className={`${styles.btnText} ${styles.logoutText}`}>Logout</p>
+          </button>
         </div>
       ) : (
-        <div>
+        <div className={styles.container}>
           <h2>Авторизация</h2>
-          <p>Выберите способ авторизации:</p>
-          <button onClick={login}>Google</button>
-          <button>Facebook</button>
+          <p className={styles.containerP}>Выберите способ авторизации:</p>
+          <button className={styles.googleBtn} onClick={login}>
+            <div className={styles.googleIconWrapper}>
+              <img
+                className={styles.googleIcon}
+                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                alt="google logo"
+              />
+            </div>
+            <p className={styles.btnText}>Sign in with google</p>
+          </button>
         </div>
       )}
     </>
