@@ -15,7 +15,6 @@
 //   equalTo,
 // } from "firebase/database";
 
-const userId = localStorage.getItem("user");
 // const db = getDatabase(app);
 // const dbRef = ref(db);
 // let cartData = [];
@@ -23,11 +22,20 @@ const userId = localStorage.getItem("user");
 // const dbRefCarts = ref(db, `carts/${userId}/`);
 
 const BASE_URL = "http://localhost:3000";
+// export async function load() {
+//   console.log("apiCartLOAD");
+//   let response = await fetch(`${BASE_URL}/cart`);
+//   //console.log(response.json());
+//   //console.log("apiCartLOAD");
+//   return await response.json();
+// }
 export async function load() {
   console.log("apiCartLOAD");
-  let response = await fetch(`${BASE_URL}/${userId}`);
+  const userId = localStorage.getItem("user");
+  let response = await fetch(`${BASE_URL}/items?cartId=${userId}`);
   //console.log(response.json());
   //console.log("apiCartLOAD");
+  console.log(response);
   return await response.json();
 }
 
@@ -47,8 +55,9 @@ export async function load() {
 //   console.log(cartData);
 //   return cartData;
 // }
+
 export async function addInit(data, id) {
-  let response = await fetch(`${BASE_URL}/`, {
+  let response = await fetch(`${BASE_URL}/cart`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -58,8 +67,20 @@ export async function addInit(data, id) {
   return await response.json();
 }
 
+// export async function add(data, id) {
+//   let response = await fetch(`${BASE_URL}/cart/`, {
+//     method: "POST",
+//     body: JSON.stringify(data),
+//     headers: {
+//       "Content-type": "application/json; charset=UTF-8",
+//     },
+//   });
+//   return await response.json();
+// }
+
 export async function add(data, id) {
-  let response = await fetch(`${BASE_URL}/cart?id=${userId}?userCart`, {
+  const userId = localStorage.getItem("user");
+  let response = await fetch(`${BASE_URL}/cart/${userId}/items`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -85,8 +106,19 @@ export async function add(data, id) {
 //   console.log(cartData);
 //   return cartData;
 // }
+
+// export async function remove(id) {
+//   let response = await fetch(`${BASE_URL}/cart/${id}`, {
+//     method: "DELETE",
+//     headers: {
+//       "Content-type": "application/json; charset=UTF-8",
+//     },
+//   });
+//   return await response.json();
+// }
+
 export async function remove(id) {
-  let response = await fetch(`${BASE_URL}/cart?id=${userId}/userCart/${id}`, {
+  let response = await fetch(`${BASE_URL}/items/${id}`, {
     method: "DELETE",
     headers: {
       "Content-type": "application/json; charset=UTF-8",
@@ -118,8 +150,8 @@ export async function remove(id) {
 // }
 
 export async function change(id, cnt) {
-  let response = await fetch(`${BASE_URL}/cart?id=${userId}/userCart/${id}`, {
-    method: "PUT",
+  let response = await fetch(`${BASE_URL}/items/${id}`, {
+    method: "PATCH",
     body: JSON.stringify({ cnt: cnt }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
@@ -127,3 +159,14 @@ export async function change(id, cnt) {
   });
   return await response.json();
 }
+
+// export async function change(id, cnt) {
+//   let response = await fetch(`${BASE_URL}/cart/${id}`, {
+//     method: "PUT",
+//     body: JSON.stringify({ cnt: cnt }),
+//     headers: {
+//       "Content-type": "application/json; charset=UTF-8",
+//     },
+//   });
+//   return await response.json();
+// }
