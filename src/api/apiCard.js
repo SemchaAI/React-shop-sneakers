@@ -1,25 +1,8 @@
-import { getDatabase, ref, child, get, set } from "firebase/database";
+import { getDatabase, ref, child, get } from "firebase/database";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-
-const fbConfig = {
-  apiKey: "AIzaSyAv6kw0FQ0MkwPvTiJJG1t2QhXjuiukiig",
-  authDomain: "react-sneakers-4151c.firebaseapp.com",
-  databaseURL:
-    "https://react-sneakers-4151c-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "react-sneakers-4151c",
-  storageBucket: "react-sneakers-4151c.appspot.com",
-  messagingSenderId: "505872214861",
-  appId: "1:505872214861:web:64f91063fb495a0d50e504",
-};
-
-const app = firebase.initializeApp(fbConfig);
-export default app;
-const db = getDatabase(app);
-console.log(db);
 
 let data = [];
 
