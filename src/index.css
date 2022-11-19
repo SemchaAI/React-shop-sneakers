@@ -11,11 +11,14 @@
 	--tomato: #E97B61;
 	--green: #9DD458;
   --gray: #B5B5B5;
+  --google-blue: #4285f4;
+  --button-active-blue: #1669F2;
+  --white: #fff;
 }
 
 
-a{
-    text-decoration: none;
+a:-webkit-any-link ,a:focus, a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
 }
 
 ul,
@@ -74,8 +77,7 @@ code {
   border-radius: 20px;
   max-width: 1080px;
   margin: 85px auto;
-  margin-bottom: 0px;
-
+  margin-bottom: 0px
 }
 header {
   border-bottom: 1px solid #EAEAEA;
@@ -89,6 +91,9 @@ header {
   padding-bottom: 44px;
   padding-top: 43px;
 
+}
+.container a {
+  color: inherit
 }
 .container h1 {
   font-weight: 700;
