@@ -1,0 +1,36 @@
+.container{
+    min-height: 100%;
+    margin-top: 86px;
+    margin-bottom: 40px;
+}
+.container h2{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+
+}
+.cardsContainer{
+    display: flex;
+    padding-left: 60px;
+    padding-right: 60px;
+    justify-content: space-around ;
+    max-width: 1080px;
+    flex-wrap: wrap;
+}
+.backContainer{
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.backButton{
+    background: #FFFFFF;
+    margin-left: 116px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.back{
+    width: 30px;
+    height: 30px;
+}
