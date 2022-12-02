@@ -28,47 +28,49 @@ const Header = () => {
     };
   }, [cnt]);
   return (
-    <header className="container">
-      <Link to="/">
-        <div className="leftBar">
-          <img
-            width={40}
-            height={40}
-            // src={require("./img/logo.png")}
-            src={logoPng}
-            alt="sneakers logo"
-          />
-          <div className="siteInfo">
-            <h2>React sneakers</h2>
-            <p>Магазин лучших кроссовок</p>
-          </div>
-        </div>
-      </Link>
-      <ul className="rightBar">
-        <li className="cartPrice">
-          <Link to="/cart">
-            <Cart />
-          </Link>
-          <p
-            className={cn({
-              [styles.counter]: true,
-              [styles.animation]: anima === true,
-            })}
-          >
-            {cnt}
-          </p>
-        </li>
-        <li className="favorite">
-          <Link to="/favorite">
-            <Favorite />
-          </Link>
-        </li>
-        <li>
-          <Link to="/user">
-            <User />
-          </Link>
-        </li>
-      </ul>
+    <header>
+      <nav className="container">
+        <Link to="/">
+          <figure className="leftBar">
+            <img
+              width={40}
+              height={40}
+              // src={require("./img/logo.png")}
+              src={logoPng}
+              alt="sneakers logo"
+            />
+            <div className="siteInfo">
+              <h2>React sneakers</h2>
+              <p>Магазин лучших кроссовок</p>
+            </div>
+          </figure>
+        </Link>
+        <ul className="rightBar">
+          <li className="cartPrice">
+            <Link to="/cart">
+              <Cart />
+            </Link>
+            <p
+              className={cn({
+                [styles.counter]: true,
+                [styles.animation]: anima === true,
+              })}
+            >
+              {cnt}
+            </p>
+          </li>
+          <li className="favorite">
+            <Link to="/favorite">
+              <Favorite />
+            </Link>
+          </li>
+          <li>
+            <Link to="/user">
+              <User />
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 };
