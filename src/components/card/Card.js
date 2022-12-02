@@ -69,6 +69,7 @@ const Card = (props) => {
             width={133}
             height={112}
             src={img}
+            title={`We have only - ${rest}  pairs of this model`}
             alt="sneakers"
           />
         </div>
