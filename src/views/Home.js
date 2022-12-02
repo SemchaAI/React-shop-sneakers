@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import useStore from "../hooks/useStore";
 import { observer } from "mobx-react-lite";
 import Card from "../components/card/Card";
 
@@ -31,86 +30,102 @@ function Home() {
 
   const [query, setQuery] = useState("");
 
+  const searchfilter = () => {
+    let tempArr = productsList.filter(
+      (e) => e.description.toLowerCase().search(query.toLowerCase()) !== -1
+    );
+    console.log(tempArr);
+    setNewlist(tempArr);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      searchfilter();
+    }
+  };
+
   useEffect(() => {
     const timeOutId = setTimeout(() => {
-      let tempArr = productsList.filter(
-        (e) => e.description.search(query) !== -1
-      );
-      console.log(tempArr);
-      setNewlist(tempArr);
+      searchfilter();
     }, 1000);
     return () => clearTimeout(timeOutId);
   }, [query]);
 
-  // const textHandler = (event) => {
-  //   let tempArr = productsList.filter(
-  //     (e) => e.description.search(event.target.value) !== -1
-  //   );
-  //   console.log(tempArr);
-  //   setNewlist(tempArr);
-  // };
-
   return (
     <>
       <div className={styles.container}>
-        <Carousel
-          className={styles.Carousel}
-          autoPlay
-          interval="5000"
-          showArrows
-          showStatus={false}
-          showThumbs={false}
-          infiniteLoop
-          renderArrowPrev={(clickHandler, hasPrev, labelPrev) =>
-            hasPrev && (
-              <button onClick={clickHandler} className={styles.ArrowPrev}>
-                <Arrow height={35} width={35} alt="left arrow" />
-              </button>
-            )
-          }
-          renderArrowNext={(clickHandler, hasNext, labelNext) =>
-            hasNext && (
-              <button onClick={clickHandler} className={styles.ArrowNext}>
-                <Arrow height={35} width={35} alt="right arrow" />
-              </button>
-            )
-          }
-          renderThumbs={() => null}
-        >
-          <div>
-            <img src={carousel1} alt="sneakers offers" />
-            <button className={styles.buttonBuy}>Купить</button>
-          </div>
-          <div>
-            <img src={carousel2} alt="sneakers offers" />
-            <button className={styles.buttonBuy}>Купить</button>
-          </div>
-          <div>
-            <img src={carousel3} alt="sneakers offers" />
-            <button className={styles.buttonBuy}>Купить</button>
-          </div>
-        </Carousel>
+        <section>
+          <Carousel
+            className={styles.Carousel}
+            autoPlay
+            interval="5000"
+            showArrows
+            showStatus={false}
+            showThumbs={false}
+            infiniteLoop
+            renderArrowPrev={(clickHandler, hasPrev, labelPrev) =>
+              hasPrev && (
+                <button onClick={clickHandler} className={styles.ArrowPrev}>
+                  <Arrow height={35} width={35} alt="left arrow" />
+                </button>
+              )
+            }
+            renderArrowNext={(clickHandler, hasNext, labelNext) =>
+              hasNext && (
+                <button onClick={clickHandler} className={styles.ArrowNext}>
+                  <Arrow height={35} width={35} alt="right arrow" />
+                </button>
+              )
+            }
+            renderThumbs={() => null}
+          >
+            <div>
+              <img src={carousel1} alt="sneakers offers" />
+              <button className={styles.buttonBuy}>Купить</button>
+            </div>
+            <div>
+              <img src={carousel2} alt="sneakers offers" />
+              <button className={styles.buttonBuy}>Купить</button>
+            </div>
+            <div>
+              <img src={carousel3} alt="sneakers offers" />
+              <button className={styles.buttonBuy}>Купить</button>
+            </div>
+          </Carousel>
+        </section>
       </div>
-      <div className="container">
-        <div>
-          <h1>Все кроссовки</h1>
+      <section>
+        <div className="container">
+          <div>
+            <h1>Все кроссовки</h1>
+          </div>
+          <div className="find">
+            <input
+              placeholder="search"
+              onChange={(event) => setQuery(event.target.value)}
+              onKeyPress={handleKeyPress}
+              list="sneakers"
+              autoComplete="off"
+            ></input>
+            <datalist id="sneakers">
+              <div className={styles.displayFilter}>
+                {productsList.map((val) => (
+                  <option key={val.id} value={val.description} />
+                  //<option>{val.description} </option>
+                  //.slice(0, 5)
+                ))}
+              </div>
+            </datalist>
+          </div>
         </div>
-        <div className="find">
-          <input
-            placeholder="search"
-            onChange={(event) => setQuery(event.target.value)}
-          ></input>
-        </div>
-      </div>
-      <div className={styles.cardsContainer}>
-        {newlist.map((val, index) => (
-          <Card index={index} val={val} key={val.id} rest={val.rest} />
-        ))}
-        {/* {console.log(test)} */}
-        {/* {item.map((val, index) => (
-            <Card index={index} val={val} key={val.id} />
-          ))} */}
-      </div>
+        <ul className={styles.cardsContainer}>
+          {newlist.map((val, index) => (
+            <li key={val.id}>
+              <Card index={index} val={val} key={val.id} rest={val.rest} />
+            </li>
+          ))}
+        </ul>
+      </section>
     </>
   );
 }
